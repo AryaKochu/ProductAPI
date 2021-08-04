@@ -30,7 +30,8 @@ namespace ProductAPI.Services
             {
                 totalRecordsSavedToDb++;
                 savedProducts = new List<Models.Product> { newProduct };
-                _dbContext.Add(savedProducts);
+
+                _dbContext.AddRange(_mapper.Map<IEnumerable<Models.Product>, IEnumerable<DB.Product>>(savedProducts));
                 
             }
             else
